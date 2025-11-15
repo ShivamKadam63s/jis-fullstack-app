@@ -15,6 +15,8 @@ public class Report {
     @Column(unique = true)
     private String reportID;
 
+    private String type;
+
     private Date generatedDate;
 
     private String content;
@@ -22,26 +24,16 @@ public class Report {
     @ManyToMany
     private List<Case> cases = new ArrayList<>();
 
-    public Report generatePendingCases() {
-        // Implementation: Query pending cases, sort by CIN
-        return this;
-    }
+    public Report generatePendingCases() { return this; }
+    public Report generateResolvedCases(Date startDate, Date endDate) { return this; }
+    public Report generateCaseStatus(String cin) { return this; }
 
-    public Report generateResolvedCases(Date startDate, Date endDate) {
-        // Implementation: Chronological list
-        return this;
-    }
-
-    public Report generateCaseStatus(String cin) {
-        // Implementation: Status by CIN
-        return this;
-    }
-
-    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getReportID() { return reportID; }
     public void setReportID(String reportID) { this.reportID = reportID; }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
     public Date getGeneratedDate() { return generatedDate; }
     public void setGeneratedDate(Date generatedDate) { this.generatedDate = generatedDate; }
     public String getContent() { return content; }

@@ -1,15 +1,14 @@
 package com.jis.entity;
 
-import lombok.Data;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Entity
-@Data
 @DiscriminatorValue("LAWYER")
 public class Lawyer extends User {
-    private String barId;
+    private String barID;
 
     @OneToMany(mappedBy = "lawyer", cascade = CascadeType.ALL)
     private List<Bill> bills = new ArrayList<>();
@@ -18,12 +17,17 @@ public class Lawyer extends User {
     private List<Case> cases = new ArrayList<>();
 
     public List<Case> searchCases(String keyword, Map<String, Object> filters) {
-        // Query, generate bill if viewed
         return new ArrayList<>();
     }
 
-    public boolean makePayment(String billId) {
-        // Process payment, update bill
+    public boolean makePayment(String billID) {
         return true;
     }
+
+    public String getBarID() { return barID; }
+    public void setBarID(String barID) { this.barID = barID; }
+    public List<Bill> getBills() { return bills; }
+    public void setBills(List<Bill> bills) { this.bills = bills; }
+    public List<Case> getCases() { return cases; }
+    public void setCases(List<Case> cases) { this.cases = cases; }
 }

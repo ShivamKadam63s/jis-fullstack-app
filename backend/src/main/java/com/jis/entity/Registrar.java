@@ -16,44 +16,29 @@ public class Registrar extends User {
     private List<Report> reports = new ArrayList<>();
 
     public Case createCase(Map<String, Object> details) {
-        // Implementation: Generate CIN, save case
         Case newCase = new Case();
-        newCase.setCin("MUM-2025-" + Math.random() * 1000); // Simplified
-        // Set details from map
+        newCase.setCin("MUM-2025-" + Math.random() * 1000);
         return newCase;
     }
 
-    public void updateCase(String cin, Map<String, Object> details) {
-        // Implementation: Update case
-    }
+    public void updateCase(String cin, Map<String, Object> details) {}
 
-    public void scheduleHearing(String cin, Date date, Date time, String courtroom) {
-        // Implementation: Create hearing
-    }
+    public void scheduleHearing(String cin, Date date, Date time, String courtroom) {}
 
-    public void adjournHearing(String hearingID, String reason, Date newDate) {
-        // Implementation: Adjourn hearing
-    }
+    public void adjournHearing(String hearingID, String reason, Date newDate) {}
 
-    public void recordProceedings(String hearingID, String summary) {
-        // Implementation: Record summary
-    }
+    public void recordProceedings(String hearingID, String summary) {}
 
-    public void recordJudgment(String cin, String summary) {
-        // Implementation: Close case with judgment
-    }
+    public void recordJudgment(String cin, String summary) {}
 
     public Report generateReport(Map<String, Object> parameters) {
-        // Implementation: Generate report based on params
         return new Report();
     }
 
     public boolean checkCalendar(Date hearingDate, Date hearingTime) {
-        // Implementation: Check availability
         return true;
     }
 
-    // Getters and setters
     public List<Case> getCases() { return cases; }
     public void setCases(List<Case> cases) { this.cases = cases; }
     public List<Report> getReports() { return reports; }

@@ -1,6 +1,14 @@
-﻿FROM openjdk:17-jdk-slim
+﻿# Build stage: use an official Maven image with JDK 17 to compile the application
+FROM maven:3.9.4-eclipse-temurin-17 AS build
+WORKDIR /workspace
+COPY pom.xml mvnw ./
+COPY .mvn .mvn
+COPY src src
+RUN mvn -B clean package -DskipTests
+
+# Runtime stage: use a smaller JRE image to run the packaged jar
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-COPY . .
-RUN ./mvnw clean package -DskipTests
+COPY --from=build /workspace/target/jis-backend-0.0.1-SNAPSHOT.jar ./app.jar
 EXPOSE 8080
-CMD ["java", "-jar", "target/jis-backend-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

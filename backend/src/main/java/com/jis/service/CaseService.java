@@ -1,11 +1,11 @@
 package com.jis.service;
 
 import com.jis.entity.Case;
+import com.jis.entity.CaseStatus;
 import com.jis.repository.CaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,17 +16,20 @@ public class CaseService {
 
     public Case createCase(Map<String, Object> details) {
         Case c = new Case();
-        c.setCaseId((String) details.get("caseId"));
+        c.setCin((String) details.get("cin"));
         c.setTitle((String) details.get("title"));
-        c.setStatus(Case.CaseStatus.valueOf((String) details.get("status")));
-        c.setStartDate((java.util.Date) details.get("startDate"));
+        c.setStatus(CaseStatus.PENDING);
         return caseRepository.save(c);
     }
 
+    public void updateCase(String cin, Map<String, Object> details) {
+        Case c = caseRepository.findById(cin).orElseThrow();
+        caseRepository.save(c);
+    }
+
     public List<Case> searchCases(String keyword, Map<String, Object> filters) {
-        // Simple keyword search on title
         return caseRepository.findAll().stream()
-                .filter(c -> c.getTitle().contains(keyword))
+                .filter(c -> c.getTitle().toLowerCase().contains(keyword.toLowerCase()))
                 .toList();
     }
 

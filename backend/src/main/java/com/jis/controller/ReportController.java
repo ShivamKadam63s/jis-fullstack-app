@@ -16,21 +16,22 @@ public class ReportController {
 
     @PostMapping("/pending")
     public Report pendingCases() {
-        return reportService.generatePending();
+        return reportService.generatePendingCases();
     }
 
     @PostMapping("/resolved")
     public Report resolved(@RequestBody Map<String, Date> dates) {
-        return reportService.generateResolved(dates.get("start"), dates.get("end"));
+        return reportService.generateResolvedCases(dates.get("start"), dates.get("end"));
     }
 
     @GetMapping("/upcoming/{date}")
     public Report upcoming(@PathVariable String date) {
-        return reportService.generateUpcoming(new Date(date)); // Simple date parsing
+        long ts = Long.parseLong(date);
+        return reportService.generateUpcomingHearings(new Date(ts));
     }
 
     @GetMapping("/status/{cin}")
     public Report status(@PathVariable String cin) {
-        return reportService.generateStatus(cin);
+        return reportService.generateCaseStatus(cin);
     }
 }

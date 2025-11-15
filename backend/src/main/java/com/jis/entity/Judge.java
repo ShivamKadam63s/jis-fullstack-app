@@ -12,16 +12,13 @@ public class Judge extends User {
     private List<Case> cases = new ArrayList<>();
 
     public Case viewCase(String cin) {
-        // Implementation: Fetch case (free access)
         return null;
     }
 
     public List<Case> searchCases(String keyword, Map<String, Object> filters) {
-        // Implementation: Search cases
         return new ArrayList<>();
     }
 
-    // Getters and setters
     public List<Case> getCases() { return cases; }
     public void setCases(List<Case> cases) { this.cases = cases; }
 }

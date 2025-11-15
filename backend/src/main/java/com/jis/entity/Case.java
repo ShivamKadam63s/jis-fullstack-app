@@ -10,6 +10,8 @@ public class Case {
     @Id
     private String cin;
 
+    private String title;
+
     private String defendantName;
 
     private String defendantAddress;
@@ -43,15 +45,13 @@ public class Case {
     public CaseStatus getStatus() { return status; }
     public void setStatus(CaseStatus status) { this.status = status; }
 
-    public void sendNotification() {
-        // Implementation: Send notification
-    }
+    public void sendNotification() {}
 
-    public void setJudgementInfo(String summary) { this.judgementInfo = summary; }
-
-    // Getters and setters
+    // Getters/Setters
     public String getCin() { return cin; }
     public void setCin(String cin) { this.cin = cin; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
     public String getDefendantName() { return defendantName; }
     public void setDefendantName(String defendantName) { this.defendantName = defendantName; }
     public String getDefendantAddress() { return defendantAddress; }
@@ -78,8 +78,4 @@ public class Case {
     public void setHearings(List<Hearing> hearings) { this.hearings = hearings; }
     public String getJudgementInfo() { return judgementInfo; }
     public void setJudgementInfo(String judgementInfo) { this.judgementInfo = judgementInfo; }
-}
-
-enum CaseStatus {
-    PENDING, CLOSED
 }

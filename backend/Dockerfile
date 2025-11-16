@@ -6,7 +6,7 @@ COPY .mvn .mvn
 COPY src src
 RUN mvn -B clean package -DskipTests
 
-# Runtime stage: use a smaller JRE image to run the packaged jar
+# Runtime stage: use a smaller JRE image to run the packaged jar (Java 17)
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /workspace/target/jis-backend-0.0.1-SNAPSHOT.jar ./app.jar

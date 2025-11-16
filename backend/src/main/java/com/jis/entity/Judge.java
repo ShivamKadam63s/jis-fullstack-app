@@ -8,7 +8,10 @@ import java.util.Map;
 @Entity
 @DiscriminatorValue("JUDGE")
 public class Judge extends User {
-    @OneToMany(mappedBy = "judge", cascade = CascadeType.ALL)
+    // Case entity doesn't declare a 'judge' association field. Provide a
+    // transient collection to satisfy accessors without creating an invalid
+    // JPA mappedBy relationship.
+    @Transient
     private List<Case> cases = new ArrayList<>();
 
     public Case viewCase(String cin) {

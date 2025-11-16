@@ -1,12 +1,13 @@
+import './index.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import Login from './pages/Login';
-import RegistrarDashboard from './pages/RegistrarDashboard';
-import JudgeHomepage from './pages/JudgeHomepage';
-import LawyerLandingPage from './pages/LawyerLandingPage';
-import CaseDetailPage from './pages/CaseDetailPage';
-import AdvancedSearchPage from './pages/AdvancedSearchPage';
+import { AuthProvider, useAuth } from './context/AuthContext.tsx';
+import Login from './pages/Login.tsx';
+import RegistrarDashboard from './pages/RegistrarDashboard.tsx';
+import JudgeHomepage from './pages/JudgeHomepage.tsx';
+import LawyerLandingPage from './pages/LawyerLandingPage.tsx';
+import CaseDetailPage from './pages/CaseDetailPage.tsx';
+import AdvancedSearchPage from './pages/AdvancedSearchPage.tsx';
 
 const ProtectedRoute = ({ children, roles }: { children: React.ReactNode; roles?: string[] }) => {
   const { user } = useAuth();

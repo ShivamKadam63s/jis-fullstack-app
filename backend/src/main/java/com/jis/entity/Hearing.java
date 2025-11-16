@@ -10,7 +10,6 @@ public class Hearing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String cin;
 
     private Date hearingDate;
 
@@ -32,8 +31,6 @@ public class Hearing {
     // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
-    public String getCin() { return cin; }
-    public void setCin(String cin) { this.cin = cin; }
     public Date getHearingDate() { return hearingDate; }
     public void setHearingDate(Date hearingDate) { this.hearingDate = hearingDate; }
     public Date getHearingTime() { return hearingTime; }

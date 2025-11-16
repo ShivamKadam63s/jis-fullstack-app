@@ -1,7 +1,8 @@
+import '../index.css';
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import api from "../api/client";
+import { useAuth } from "../context/AuthContext.tsx";
+import api from "../api/client.ts";
 import { Case } from "../types";
 
 interface Hearing {

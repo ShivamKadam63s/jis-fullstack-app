@@ -20,6 +20,8 @@ public class Bill {
     @ManyToOne
     private Lawyer lawyer;
 
+    private String status; // e.g. PENDING, PAID, CANCELLED
+
     public double calculateAmount() {
         return 100.0; // Per case view
     }
@@ -40,4 +42,7 @@ public class Bill {
     public void setGeneratedDate(Date generatedDate) { this.generatedDate = generatedDate; }
     public Lawyer getLawyer() { return lawyer; }
     public void setLawyer(Lawyer lawyer) { this.lawyer = lawyer; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

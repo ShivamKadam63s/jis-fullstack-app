@@ -1,6 +1,7 @@
+import '../index.css';
 import React, { useState, useEffect } from "react";
-import { Search, Bell, FileText, HelpCircle, Users, Settings, Calendar, FileChartColumn, CreditCard, Folder, Home } from "lucide-react";
-import api from "../api/client";
+import { Search, Bell, FileText, HelpCircle, Users, Settings, Calendar, CreditCard, Folder, Home } from "lucide-react";
+import api from "../api/client.ts";
 import { Case } from "../types";
 
 interface Stats {
@@ -77,7 +78,7 @@ export default function RegistrarDashboard() {
             <CreditCard size={18}/> <span>Billing</span>
           </a>
           <a href="#" className="flex items-center space-x-2 hover:bg-[#0D447A] p-2 rounded">
-            <FileChartColumn size={18}/> <span>Reports</span>
+            <FileText size={18}/> <span>Reports</span>
             <span className="ml-auto bg-red-600 text-white rounded-full text-xs px-2">3</span>
           </a>
           <a href="#" className="flex items-center space-x-2 hover:bg-[#0D447A] p-2 rounded">

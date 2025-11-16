@@ -24,11 +24,9 @@ public abstract class User {
 
     private String role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Bill> bills = new ArrayList<>();
-
-    @OneToMany(mappedBy = "presidingJudge", cascade = CascadeType.ALL)
-    private List<Case> cases = new ArrayList<>();
+    // Removed direct collection mappings here because the target entities
+    // do not declare corresponding association fields. Manage relationships
+    // from the specific subclasses/entities that actually own them.
 
     public boolean login(String username, String password) {
         // Implementation: Validate credentials
@@ -52,8 +50,6 @@ public abstract class User {
     public void setPassword(String password) { this.password = password; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
-    public List<Bill> getBills() { return bills; }
-    public void setBills(List<Bill> bills) { this.bills = bills; }
-    public List<Case> getCases() { return cases; }
-    public void setCases(List<Case> cases) { this.cases = cases; }
+    // note: subclass-specific getters/setters (e.g., in Lawyer/Judge)
+    // provide access to related collections when appropriate.
 }

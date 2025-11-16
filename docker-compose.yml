@@ -9,8 +9,9 @@
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    command: --default-authentication-plugin=mysql_native_password
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpass"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -27,8 +28,11 @@
     depends_on:
       mysql:
         condition: service_healthy
-    volumes:
-      - ./backend:/app  # For dev hot-reload (optional)
+    # NOTE: do not bind-mount the host backend folder to /app in the container
+    # because it will hide the packaged jar copied into /app by the image build.
+    # For development hot-reload, mount to a different path or use a separate
+    # docker-compose.override.yml. The mount has been removed to allow the
+    # packaged jar to be present at runtime.
 
   frontend:
     build: ./frontend

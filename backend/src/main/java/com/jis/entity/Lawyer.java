@@ -12,8 +12,10 @@ public class Lawyer extends User {
 
     @OneToMany(mappedBy = "lawyer", cascade = CascadeType.ALL)
     private List<Bill> bills = new ArrayList<>();
-
-    @OneToMany(mappedBy = "lawyer", cascade = CascadeType.ALL)
+    // Case relationships should be defined on the Case entity. The project
+    // currently does not declare an owning 'lawyer' field on Case, so expose
+    // a transient collection here to avoid compile/runtime mapping errors.
+    @Transient
     private List<Case> cases = new ArrayList<>();
 
     public List<Case> searchCases(String keyword, Map<String, Object> filters) {

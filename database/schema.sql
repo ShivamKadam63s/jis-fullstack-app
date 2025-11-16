@@ -84,10 +84,11 @@ CREATE TABLE audit_logs (
 );
 
 -- Insert sample data
+-- Password: 'password' (bcrypt hashed)
 INSERT INTO users (user_id, name, email, password, role) VALUES 
-('reg1', 'Registrar John', 'reg@court.com', '$2a$10$hashedpass', 'REGISTRAR'),
-('judge1', 'Judge Patel', 'judge@court.com', '$2a$10$hashedpass', 'JUDGE'),
-('lawyer1', 'Adv. Doe', 'lawyer@bar.com', '$2a$10$hashedpass', 'LAWYER');
+('reg1', 'Registrar John', 'reg@court.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'REGISTRAR'),
+('judge1', 'Judge Patel', 'judge@court.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'JUDGE'),
+('lawyer1', 'Adv. Doe', 'lawyer@bar.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'LAWYER');
 
 INSERT INTO cases (cin, defendant_name, defendant_address, crime_type, crime_date, crime_location, arresting_officer, arrest_date, presiding_judge, public_prosecutor, start_date, expected_completion_date) VALUES 
 ('MUM-2025-00042', 'John Doe', '12 Example St, Mumbai', 'Theft', '2025-06-01', 'Colaba', 'Officer R. Singh', '2025-06-05', 'Hon. J. Patel', 'Prosecutor K. Rao', '2025-07-01', '2025-12-01');

@@ -1,5 +1,6 @@
+import '../index.css';
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import api from '../api/client';
+import api from '../api/client.ts';
 
 interface User {
   role: string;

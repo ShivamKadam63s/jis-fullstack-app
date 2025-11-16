@@ -1,6 +1,7 @@
+import '../index.css';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/client";
+import api from "../api/client.ts";
 import { Case } from "../types";
 
 export default function AdvancedSearchPage() {

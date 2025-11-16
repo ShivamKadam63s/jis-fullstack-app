@@ -1,5 +1,6 @@
+import '../index.css';
 import React, { useState, useEffect } from "react";
-import api from "../api/client";
+import api from "../api/client.ts";
 import { Case } from "../types";
 
 export default function JudgeHomepage() {

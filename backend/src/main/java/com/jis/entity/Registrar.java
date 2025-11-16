@@ -9,11 +9,8 @@ import java.util.Map;
 @Entity
 @DiscriminatorValue("REGISTRAR")
 public class Registrar extends User {
-    @OneToMany(mappedBy = "registrar", cascade = CascadeType.ALL)
-    private List<Case> cases = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Report> reports = new ArrayList<>();
+    // Removed mappings: Case/Report do not declare matching association fields
+    // so these collections are removed to prevent JPA initialization errors.
 
     public Case createCase(Map<String, Object> details) {
         Case newCase = new Case();
@@ -39,8 +36,6 @@ public class Registrar extends User {
         return true;
     }
 
-    public List<Case> getCases() { return cases; }
-    public void setCases(List<Case> cases) { this.cases = cases; }
-    public List<Report> getReports() { return reports; }
-    public void setReports(List<Report> reports) { this.reports = reports; }
+    // Relationship accessors removed; add explicit associations when
+    // Case/Report entities include owning fields.
 }

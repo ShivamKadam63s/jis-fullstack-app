@@ -34,7 +34,7 @@ public class Case {
 
     private Date expectedCompletionDate;
 
-    @OneToMany(mappedBy = "cin", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "caseRef", cascade = CascadeType.ALL)
     private List<Hearing> hearings;
 
     private String judgementInfo;

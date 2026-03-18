@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/client.ts";
 import { Case } from "../types";
-
+/*Hello i was here */
 export default function AdvancedSearchPage() {
   const [filters, setFilters] = useState({
-    dateStart: '',
+
     dateEnd: '',
     crimeType: '',
     judge: '',

@@ -86,7 +86,7 @@ CREATE TABLE audit_logs (
 -- Insert sample data
 -- Password: 'password' (bcrypt hashed)
 INSERT INTO users (user_id, name, email, password, role) VALUES 
-('reg1', 'Registrar John', 'reg@court.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'REGISTRAR'),
+('reg1', 'Registrar John', 'reg@court.com', '$2b$10$58/5pp9cPyFkeQXWR4Uwoe8xbuck1roDpUvjOFrb25pXPti/c3X3e', 'REGISTRAR'),
 ('judge1', 'Judge Patel', 'judge@court.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'JUDGE'),
 ('lawyer1', 'Adv. Doe', 'lawyer@bar.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/iyq', 'LAWYER');
 

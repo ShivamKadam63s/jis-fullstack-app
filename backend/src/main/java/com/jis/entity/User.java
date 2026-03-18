@@ -1,13 +1,18 @@
 package com.jis.entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public abstract class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,18 +29,36 @@ public abstract class User {
 
     private String role;
 
-    // Removed direct collection mappings here because the target entities
-    // do not declare corresponding association fields. Manage relationships
-    // from the specific subclasses/entities that actually own them.
+    @OneToMany(mappedBy = "lawyer", cascade = CascadeType.ALL) // Fixed: mappedBy = "lawyer" in Bill
+    private List<Bill> bills = new ArrayList<>();
+
+    @OneToMany(mappedBy = "presidingJudge", cascade = CascadeType.ALL) // Fixed: mappedBy = "presidingJudge" in Case
+    private List<Case> cases = new ArrayList<>();
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
+    }
+
+    @Override
+    public String getUsername() {
+        return userID;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+    @Override
+    public boolean isEnabled() { return true; }
 
     public boolean login(String username, String password) {
-        // Implementation: Validate credentials
         return true;
     }
 
-    public void logout() {
-        // Implementation: Clear session
-    }
+    public void logout() {}
 
     // Getters and setters
     public Long getId() { return id; }
@@ -50,6 +73,8 @@ public abstract class User {
     public void setPassword(String password) { this.password = password; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
-    // note: subclass-specific getters/setters (e.g., in Lawyer/Judge)
-    // provide access to related collections when appropriate.
+    public List<Bill> getBills() { return bills; }
+    public void setBills(List<Bill> bills) { this.bills = bills; }
+    public List<Case> getCases() { return cases; }
+    public void setCases(List<Case> cases) { this.cases = cases; }
 }

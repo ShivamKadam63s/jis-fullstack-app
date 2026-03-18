@@ -26,7 +26,8 @@ public class Case {
 
     private Date arrestDate;
 
-    private String presidingJudge;
+    @Column(name = "presiding_judge")
+    private String presidingJudge; // Fixed: Added for mappedBy in User
 
     private String publicProsecutor;
 
@@ -34,7 +35,7 @@ public class Case {
 
     private Date expectedCompletionDate;
 
-    @OneToMany(mappedBy = "caseRef", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cin", cascade = CascadeType.ALL)
     private List<Hearing> hearings;
 
     private String judgementInfo;
@@ -78,4 +79,8 @@ public class Case {
     public void setHearings(List<Hearing> hearings) { this.hearings = hearings; }
     public String getJudgementInfo() { return judgementInfo; }
     public void setJudgementInfo(String judgementInfo) { this.judgementInfo = judgementInfo; }
+}
+
+enum CaseStatus {
+    PENDING, CLOSED
 }

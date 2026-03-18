@@ -18,16 +18,14 @@ public class Bill {
     private Date generatedDate;
 
     @ManyToOne
-    private Lawyer lawyer;
-
-    private String status; // e.g. PENDING, PAID, CANCELLED
+    @JoinColumn(name = "lawyer_id")
+    private User lawyer; // Fixed: Added for mappedBy in User
 
     public double calculateAmount() {
-        return 100.0; // Per case view
+        return 100.0;
     }
 
     public boolean processPayment() {
-        // Implementation: Process payment
         return true;
     }
 
@@ -40,9 +38,6 @@ public class Bill {
     public void setAmount(double amount) { this.amount = amount; }
     public Date getGeneratedDate() { return generatedDate; }
     public void setGeneratedDate(Date generatedDate) { this.generatedDate = generatedDate; }
-    public Lawyer getLawyer() { return lawyer; }
-    public void setLawyer(Lawyer lawyer) { this.lawyer = lawyer; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    public User getLawyer() { return lawyer; }
+    public void setLawyer(User lawyer) { this.lawyer = lawyer; }
 }

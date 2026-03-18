@@ -1,7 +1,6 @@
 package com.jis.service;
 
 import com.jis.entity.Case;
-import com.jis.entity.CaseStatus;
 import com.jis.repository.CaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +17,8 @@ public class CaseService {
         Case c = new Case();
         c.setCin((String) details.get("cin"));
         c.setTitle((String) details.get("title"));
-        c.setStatus(CaseStatus.PENDING);
         return caseRepository.save(c);
     }
-
     public void updateCase(String cin, Map<String, Object> details) {
         Case c = caseRepository.findById(cin).orElseThrow();
         caseRepository.save(c);

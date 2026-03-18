@@ -6,7 +6,7 @@ import { Case } from "../types";
 /*Hello i was here */
 export default function AdvancedSearchPage() {
   const [filters, setFilters] = useState({
-
+/* Ok i forget what line was here*/
     dateEnd: '',
     crimeType: '',
     judge: '',

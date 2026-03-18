@@ -7,6 +7,7 @@ import { Case } from "../types";
 export default function AdvancedSearchPage() {
   const [filters, setFilters] = useState({
 /* Ok i forget what line was here*/
+    newDatapoint:'',//skimlane
     dateEnd: '',
     crimeType: '',
     judge: '',

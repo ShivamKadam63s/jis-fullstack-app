@@ -111,10 +111,11 @@ export default function LawyerLandingPage() {
                 ))}
               </div>
             </div>
-            {/* Billing Summary */}
+            {/* Billing Summary */} 
+            // hmm it was here
             <div>
               <h2 className="text-lg font-semibold mb-4">Billing Summary</h2>
-              <div className="bg-white rounded shadow">
+              <div className="bg-white rounded">
                 <div className="p-4 space-y-4">
                   <p className="font-medium text-lg">Current Balance: ₹2,500</p>
                   <div>

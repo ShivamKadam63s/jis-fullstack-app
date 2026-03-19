@@ -111,6 +111,7 @@ export default function LawyerLandingPage() {
                 ))}
               </div>
             </div>
+            //SOME change here
             {/* Billing Summary */} 
             // hmm it was here
             <div>
